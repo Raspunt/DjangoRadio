@@ -8,6 +8,8 @@
     {% load static %}
     <meta charset="utf-8">
      <title>Radio hehe</title>
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+     <link rel="stylesheet"  href="{% static '/Radio/styles.css' %}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
   </head>
@@ -26,16 +28,22 @@
           </div>
          </div>
 
-      <div class="container bg-secondary mt-5 ">
-        {% for radio in radios %}
-            <h1>{{ radio.title }}</h1>
-          <audio src="{{radio.StreamUrl}}" controls class = 'audiosForjs'  > </audio>
-          
+       <div class="container bg-secondary mt-5 ">
+         {% for radio in radios %}
 
+         <ul>
+           <h1>{{ radio.title }}</h1>
+           <audio src="{{radio.StreamUrl}}" controls class = 'audiosForjs'  > </audio>
+          <div class = 'float-right '>
+
+          <a href = "?play={{ radio.id }}" class = "btn btn-success"><i class="fas fa-play"></i></a>
+          <a href = "?pause={{ radio.id }}" class = "btn btn-danger"><i class="fas fa-pause"></i></a>
+          </div>
+          </ul>
           {% endfor %}
-     </div>
+      </div>
 
-     
+
 
 
 
